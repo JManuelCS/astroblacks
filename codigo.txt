@@ -1,0 +1,1 @@
+Lectura desde QR/NFC que redirija a esta página y cuente el escaneo (ideal para productos físicos).

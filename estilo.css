@@ -1,0 +1,339 @@
+
+    body {
+    margin: 0;
+    background-color: #000;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    align-items: flex-start;      /* Para escritorio, sube un poco */
+    justify-content: center;
+    height: 100vh;
+    padding: 60px 20px 20px 20px; /* padding top para dejar espacio arriba */
+    background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+    background-repeat: repeat;
+    background-size: auto;
+    position: relative;
+    overflow: hidden;
+    }
+
+
+    /* Nebulosa o nube cósmica */
+    .nebula {
+    position: fixed;
+    top: -20%;
+    left: -20%;
+    width: 140vw;
+    height: 140vh;
+    background: 
+        radial-gradient(circle at 30% 40%, rgba(20, 214, 101, 0.07), transparent 60%),
+        radial-gradient(circle at 70% 70%, rgba(20, 214, 101, 0.05), transparent 55%),
+        radial-gradient(circle at 50% 20%, rgba(20, 214, 101, 0.04), transparent 70%);
+    animation: nebulaMove 60s linear infinite;
+    z-index: -3;
+    pointer-events: none;
+    filter: blur(25px);
+    mix-blend-mode: screen;
+}
+
+    /* Estrellas pequeñas */
+    .stars {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+      top: 0;
+      left: 0;
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: twinkle 2s infinite ease-in-out alternate, moveStar linear infinite;
+    }
+
+    @keyframes twinkle {
+      0% { opacity: 0.3; transform: scale(1); }
+      100% { opacity: 1; transform: scale(1.4); }
+    }
+
+    @keyframes moveStar {
+      0% { transform: translate(0, 0); }
+      50% { transform: translate(10px, 5px); }
+      100% { transform: translate(0, 0); }
+    }
+
+    /* Meteoritos (estrellas fugaces) */
+    .meteors {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: -1;
+      overflow: visible;
+    }
+
+    .meteor {
+    position: absolute;
+    width: 120px;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(20, 214, 101, 0.6), transparent);
+    filter: drop-shadow(0 0 6px rgba(20, 214, 101, 0.8));
+    border-radius: 1px;
+    transform: rotate(-45deg);
+    animation-name: meteorMove;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-fill-mode: backwards;
+    opacity: 1;
+    }
+
+    @keyframes meteorMove {
+      0% {
+        transform: translateX(120vw) translateY(-120vh) rotate(-45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateX(-100px) translateY(100px) rotate(-45deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes meteorMoveReverse {
+    0% {
+        transform: translateX(-120vw) translateY(-120vh) rotate(45deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100px) translateY(100px) rotate(45deg);
+        opacity: 0;
+    }
+    }
+
+    /* Diferentes duraciones y retrasos para meteoros */
+    .meteor:nth-child(1) {
+      top: 10%;
+      left: -10%;
+      animation-duration: 3.5s;
+      animation-delay: 0s;
+    }
+    .meteor:nth-child(2) {
+      top: 30%;
+      left: 5%;
+      animation-duration: 4s;
+      animation-delay: 2s;
+    }
+    .meteor:nth-child(3) {
+      top: 50%;
+      left: 15%;
+      animation-duration: 3.8s;
+      animation-delay: 4s;
+    }
+    .meteor:nth-child(4) {
+      top: 90%;
+      left: 25%;
+      animation-duration: 4.2s;
+      animation-delay: 6s;
+    }
+    .meteor:nth-child(5) {
+      top: 70%;
+      left: 0%;
+      animation-duration: 2.2s;
+      animation-delay: 8s;
+    }
+    .meteor:nth-child(6) {
+      top: 50%;
+      left: 50%;
+      animation-duration: 3.2s;
+      animation-delay: 10s;
+    }
+    .meteor:nth-child(7) {
+      top: 30%;
+      left: 15%;
+      animation-duration: 5.2s;
+      animation-delay: 12s;
+    }
+
+
+
+
+
+    /* Contenedor principal */
+    .container {
+    position: relative;
+    z-index: 0;
+    background: rgba(0, 0, 0, 0.50);
+    border-radius: 25px;
+    padding: 30px 20px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    border: 1px solid #333;
+    animation: fadeIn 1.2s ease-in-out, pulseShadow 4s ease-in-out infinite;
+    box-shadow: 0 0 30px 5px rgba(20, 214, 101, 0.6);
+    }
+
+    /* Media query para móviles */
+    @media (max-width: 480px) {
+    body {
+        align-items: flex-start;    /* Asegura que esté arriba */
+        padding-top: 10px;          /* Menos espacio arriba */
+    }
+
+    .container {
+        margin-top: 0;              /* Sin margen negativo */
+        max-width: 95%;             /* Más ancho en móvil */
+        padding: 20px 15px;
+    }
+    }
+
+
+    
+    @media (max-width: 480px) {
+    body {
+        align-items: flex-start;    /* Asegura que esté arriba */
+        padding-top: 10px;          /* Menos espacio arriba */
+    }
+
+    .container {
+        margin-top: 0;              /* Sin margen negativo */
+        max-width: 95%;             /* Más ancho en móvil */
+        padding: 20px 15px;
+    }
+    }
+
+    @keyframes pulseShadow {
+    0%, 100% {
+        box-shadow: 0 0 30px 5px rgba(7, 99, 45, 0.6);
+    }
+    50% {
+        box-shadow: 0 0 45px 10px rgba(20, 214, 101, 0.6);
+    }
+    }
+
+
+    .rh-logo {
+      width: 150px;
+      margin-bottom: 10px;
+      filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.1));
+      animation: girar360 3s linear infinite;
+      transform-style: preserve-3d;
+    }
+
+    .astro {
+      margin-top: 10%;
+      width: 70%;
+      animation: slideDown 1s ease-out;
+      max-width: 500%;
+      margin: 50px;
+    }    
+
+    img {
+      width: 60%;
+      max-width: 200px;
+      margin: 30px 0;
+      filter: drop-shadow(0 0 10px rgba(0,0,0,0.3));
+      animation: popIn 1s ease;
+      transition: transform 0.4s ease;
+    }
+
+    img:hover {
+      transform: scale(1.08) rotate(-2deg);
+      filter: drop-shadow(0 0 10px rgba(20, 214, 101, 0.6));
+    }
+
+    .original {
+      font-size: 1.5rem;
+      background: linear-gradient(90deg, #13d65e, #ff9999);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: pulseText 3s ease-in-out infinite;
+    }
+
+    .authentic {
+      color: #aaa;
+      font-size: 1rem;
+      margin-top: 5px;
+      letter-spacing: 1px;
+      opacity: 0.85;
+      animation: fadeIn 1.8s ease-in-out;
+    }
+
+    .scan-count {
+      margin-top: 30px;
+      font-size: 1.2rem;
+    }
+
+    .count-number {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #fff;
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-20px); opacity: 0; }
+      to   { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes popIn {
+      0%   { transform: scale(0.9); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes pulseText {
+      0% { filter: brightness(1); }
+      50% { filter: brightness(1.5); }
+      100% { filter: brightness(1); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50%      { transform: scale(1.1); }
+    }
+
+    @keyframes spin {
+      0%   { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+}
+
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 20px 15px;
+      }
+      .original {
+        font-size: 1.2rem;
+      }
+      .count-number {
+        font-size: 2.5rem;
+      }
+    }
+    @keyframes girar360 {
+      from {
+        transform: rotateY(0deg);
+      }
+      to {
+        transform: rotateY(360deg);
+      }
+    }
+
+      .palomita {
+        width: 50px;
+        animation: girar360 3s linear infinite;
+        transform-style: preserve-3d;
+        filter: drop-shadow(0 0 5px rgba(20, 214, 101, 0.8));
+        margin-top: 5px;
+      }
